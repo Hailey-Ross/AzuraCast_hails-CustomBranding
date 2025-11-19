@@ -143,13 +143,6 @@ This repo acts as a **backup** and **version-controlled reference** for all futu
 
 ---
 
-## 📜 License
-
-This project is licensed under the **MIT License**.  
- attribution is appreciated but not required.
-
----
-
 ## 💬 Contact / Credits
 
 Built by **Hailey Ross**  
