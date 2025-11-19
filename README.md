@@ -146,5 +146,4 @@ This repo acts as a **backup** and **version-controlled reference** for all futu
 ## 💬 Contact / Credits
 
 Built by **Hailey Ross**  
-Enhancements and README prepared with AI assistance.
 
