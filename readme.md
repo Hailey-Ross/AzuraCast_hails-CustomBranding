@@ -139,11 +139,5 @@ This repo acts as a **backup** and **version-controlled reference** for all futu
 - Make sure all background URLs load properly in your browser
 
 ### UI appearing behind particles?
-- Adjust `z-index` values in `Custom_CSS.css` if needed
-
----
-
-## 💬 Contact / Credits
-
-Built by **Hailey Ross**  
+- Adjust `z-index` values in `Custom_CSS.css` if needed  
 
