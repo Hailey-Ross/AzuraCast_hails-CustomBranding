@@ -22,6 +22,11 @@ This setup mirrors the behavior of your original standalone homepage and adapts 
 
 ---
 
+## 🖼️ Preview
+![Preview](https://raw.githubusercontent.com/Hailey-Ross/AzuraCast_hails-CustomBranding/main/preview.gif)
+
+---
+
 ## 📁 Repository Contents
 
 | File | Purpose |
