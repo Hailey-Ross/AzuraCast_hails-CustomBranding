@@ -1,4 +1,4 @@
-# AzuraCast_hails-CustomBranding
+# hails.AzuraCast-CustomBranding
 Custom Branding Setup for AzuraCast Public Pages  
 Created by **Hailey Ross**
 
