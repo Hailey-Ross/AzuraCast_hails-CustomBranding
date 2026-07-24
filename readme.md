@@ -20,7 +20,7 @@ This mirrors the behavior of the standalone homepage and adapts it to AzuraCast'
 
 ## Preview
 
-![Preview](https://assets.hails.cc/i/azura-custombrand-preview.gif)
+![Preview](https://assets.hails.cc/i/azura-custombrand-preview2.gif)
 
 ## Repository contents
 
