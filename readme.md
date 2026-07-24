@@ -1,156 +1,140 @@
 # hails.AzuraCast-CustomBranding
-Custom Branding Setup for AzuraCast Public Pages  
-Created by **Hailey Ross**
 
----
+Custom branding setup for AzuraCast public pages, created by **Hailey Ross**.
 
-## 🚀 Overview
+## Overview
 
-This repository contains a plug‑and‑play branding package designed specifically for **AzuraCast Docker installations** that provide:
+A plug-and-play branding package for **AzuraCast Docker installations**, which expose only
+**Custom CSS** and **Custom JS** fields under branding (no HTML header/footer). Everything is
+injected automatically through those two fields — no HTML editing required.
 
-- ✅ Custom CSS  
-- ✅ Custom JS   
+It gives your AzuraCast public pages:
 
-These files let you fully modernize your AzuraCast public pages with:
+- A dynamic **Particles.js** animated background
+- **Random background images** on each page reload
+- A **custom animated cursor** with a sparkle trail (self-contained, nothing to host)
+- A **served counter** — an animated per-character gradient label in the corner
+- Clean layering so the AzuraCast UI stays fully interactive above the animation
 
-- 🎆 A dynamic **Particles.js** animated background  
-- 🌄 **Random background images** on each page reload  
-- 🎨 Clean layering so AzuraCast’s UI remains fully interactive  
-- 🧩 100% automatic injection, *no HTML editing required*  
+This mirrors the behavior of the standalone homepage and adapts it to AzuraCast's branding system.
 
-This setup mirrors the behavior of your original standalone homepage and adapts it for AzuraCast’s branding system.
+## Preview
 
----
-
-## 🖼️ Preview
 ![Preview](https://assets.hails.cc/i/azura-custombrand-preview.gif)
 
----
-
-## 📁 Repository Contents
+## Repository contents
 
 | File | Purpose |
 |------|---------|
-| `Custom_CSS.css` | Controls page background behavior, ensures proper layering, enables transparent particle canvas, and keeps UI elements above the animation. |
-| `Custom_JS.js` | Injects the particles container, loads particles.js + your config, and randomizes background images using your hosted assets. |
+| `Custom_CSS.css` | Page background behavior, layering, transparent particle canvas, and styling for the custom cursor and served counter. |
+| `Custom_JS.js` | Injects the particles container, loads particles.js and your config, randomizes the background, injects the animated cursor, and injects the served counter (text loaded from your hosted `served.js`). |
 
----
+## Installation
 
-## 🛠 How to Use These Files
+### 1. Open the branding settings
 
-### 1. Log in to AzuraCast as **System Administrator**
-Navigate to:
-
-```
-Administration → Branding
-```
-
-You should see:
-
-- ✔ Custom CSS  
-- ✔ Custom JS  
-- ❌ No HTML header/footer options  
-
-This setup works **perfectly** with only the two available fields.
-
----
-
-## 2. Paste the Custom CSS
-
-1. Open `Custom_CSS.css`
-2. Copy all content
-3. Paste into:
+Log in to AzuraCast as a **System Administrator** and go to:
 
 ```
-Administration → Branding → Custom CSS
+Administration -> Branding
 ```
 
-What this CSS does:
+You'll have two relevant fields: **Custom CSS** and **Custom JS**. There are no HTML
+header/footer fields, and none are needed.
 
-- Sets the body to support full-screen backgrounds  
-- Fixes particle layer behind UI  
-- Ensures the particle canvas remains transparent  
-- Resolves z-index conflicts by lifting all UI components above the animation  
+### 2. Paste the Custom CSS
 
----
+Copy the full contents of `Custom_CSS.css` into **Administration -> Branding -> Custom CSS**.
 
-## 3. Paste the Custom JS
+It handles:
 
-1. Open `Custom_JS.js`
-2. Copy all content
-3. Paste into:
+- Full-screen background support on the body
+- Fixing the particle layer behind the UI and keeping its canvas transparent
+- Resolving z-index conflicts so all UI components sit above the animation
+- Positioning and styling the custom cursor and served counter
 
-```
-Administration → Branding → Custom JS
-```
+### 3. Paste the Custom JS
 
-What this JS does:
+Copy the full contents of `Custom_JS.js` into **Administration -> Branding -> Custom JS**.
 
-- Dynamically creates `<div id="particles-js">`
-- Loads `particles.js` from your hosting server
-- Loads your configuration script
-- Randomizes your background image from your asset list
-- Ensures no duplicate scripts load
+It handles:
 
-No HTML editing is required — the script injects everything automatically.
+- Creating `<div id="particles-js">` and loading particles.js plus your config
+- Randomizing the background image from your asset list
+- Injecting the animated cursor and its sparkle trail
+- Injecting the served counter and loading its text from `served.js`
+- Guarding against duplicate script loads
 
----
+## Asset requirements
 
-## 🖼 Asset Requirements
-###### ⚠️ Configure/download `particles.js` and `script.js` from Vincent Garreau's [Particles.js](https://vincentgarreau.com/particles.js/) project.  
-The JS file expects hosted assets, such as:
+Download and configure `particles.js` and `script.js` from Vincent Garreau's
+[Particles.js](https://vincentgarreau.com/particles.js/) project, then host them yourself.
+
+The JS expects these hosted assets:
+
 ```
 https://yourdomain.com/path/bg1.jpg
 https://yourdomain.com/path/bg-special.png
 https://yourdomain.com/path/particles.js
 https://yourdomain.com/path/script.js
+https://yourdomain.com/path/served.js
 ```
-- Update `Custom_JS.js` to match how your domain and file paths are set up.
 
-Within `Custom_JS.js`, you will need to update `coreScript.src = 'https://LINK_TO/particlejs/particles.js';` and `configScript.src = 'https://LINK_TO/particlejs/script.js';` near the bottom, as well as the `bgImages` variable at the top:
+The custom cursor needs nothing hosted — its SVG is inline in `Custom_JS.js`.
 
+The served counter loads its text from a small `served.js` you host. That file just sets the
+label text and reveals it:
+
+```js
+(function(){var w=document.getElementById("served");if(!w)return;w.textContent="Over 9000 requests served";w.className="on";})();
 ```
+
+Change the string to whatever you want the counter to say.
+
+In `Custom_JS.js`, update the following to match your own hosting:
+
+- `coreScript.src = 'https://LINK_TO/particlejs/particles.js';`
+- `configScript.src = 'https://LINK_TO/particlejs/script.js';`
+- `s.src = 'https://LINK_TO/served.js';`
+- The `bgImages` array near the top:
+
+```js
 const bgImages = [
-      'URL TO IMAGE',
-      'URL TO IMAGE',
-      'URL TO IMAGE'
-    ];
+  'URL TO IMAGE',
+  'URL TO IMAGE',
+  'URL TO IMAGE'
+];
 ```
 
+## Updating
 
----
+When you change background URLs, particle configuration, animation behavior, layering rules,
+or hosting paths:
 
-## 🔄 Updating These Files
+1. Edit the files in this repository.
+2. Copy/paste the updated versions back into AzuraCast.
 
-Whenever you update:
+The repo acts as a backup and a version-controlled reference for future changes.
 
-- Background image URLs  
-- Particle configuration  
-- Animation behavior  
-- Layering rules  
-- Hosting paths  
+## Troubleshooting
 
-Simply:
+**Particles not showing**
+- Confirm the `particles.js` URL points to the correct location on your host.
+- Check the URLs for typos.
+- Confirm `#particles-js` is being injected (browser inspector).
 
-1. Edit the files in this repository  
-2. Copy/paste the updated versions back into AzuraCast  
+**Background not changing**
+- Double-check the URLs for typos.
+- Make sure every background URL loads on its own in a browser.
 
-This repo acts as a **backup** and **version-controlled reference** for all future changes.
+**UI appearing behind particles**
+- Check for typos first.
+- Adjust the `z-index` values in `Custom_CSS.css` if needed.
 
----
+**Custom cursor not appearing**
+- It's disabled by design on touch / coarse-pointer devices and when the OS requests reduced motion.
+- Confirm `#hailsCursor` is injected (browser inspector).
 
-## 🧪 Troubleshooting
-
-### Particles not showing?
-- Ensure your `particles.js` URL is pointing to the correct location on your hosting provider
-- Double check the URLs for typos.
-- Check that `#particles-js` is being injected (browser inspector)
-
-### Background not changing?
-- Triple check the URLs for typos.
-- Make sure all background URLs load properly in your browser
-
-### UI appearing behind particles?
-- FIRST, ensure you have no typos in your code.
-- Try adjusting `z-index` values in `Custom_CSS.css` if needed  
-
+**Served counter not showing**
+- Confirm your `served.js` URL loads and sets the text.
+- Check the browser console for load errors on `served.js`.
