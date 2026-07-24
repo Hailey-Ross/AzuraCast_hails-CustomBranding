@@ -13,13 +13,14 @@ It gives your AzuraCast public pages:
 - A dynamic **Particles.js** animated background
 - **Random background images** on each page reload
 - A **custom animated cursor** with a sparkle trail (self-contained, nothing to host)
-- A **served counter** — an animated per-character gradient label in the corner
+- A **served counter** an animated per-character gradient label in the corner
 - Clean layering so the AzuraCast UI stays fully interactive above the animation
 
 This mirrors the behavior of the standalone homepage and adapts it to AzuraCast's branding system.
 
 ## Preview
 
+[Preview](https://assets.hails.cc/i/azura-custombrand-preview2.gif)
 ![Preview](https://assets.hails.cc/i/azura-custombrand-preview2.gif)
 
 ## Repository contents
