@@ -216,6 +216,9 @@
   else window.addEventListener('load', initCursor);
 })();
 
+// Served counter: disabled by default. To enable it, host a served.js that sets the
+// counter text, put its URL in s.src below, then remove the /* and */ around this block.
+/*
 (function () {
   if (window._hailsServedLoaded) return;
   window._hailsServedLoaded = true;
@@ -277,3 +280,4 @@
   if (document.readyState === 'complete') startServed();
   else window.addEventListener('load', startServed);
 })();
+*/

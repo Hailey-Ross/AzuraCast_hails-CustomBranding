@@ -13,7 +13,7 @@ It gives your AzuraCast public pages:
 - A dynamic **Particles.js** animated background
 - **Random background images** on each page reload
 - A **custom animated cursor** with a sparkle trail (self-contained, nothing to host)
-- A **served counter** an animated per-character gradient label in the corner
+- An optional **served counter** (off by default), an animated per-character gradient label in the corner
 - Clean layering so the AzuraCast UI stays fully interactive above the animation
 
 This mirrors the behavior of the standalone homepage and adapts it to AzuraCast's branding system.
@@ -28,7 +28,7 @@ This mirrors the behavior of the standalone homepage and adapts it to AzuraCast'
 | File | Purpose |
 |------|---------|
 | `Custom_CSS.css` | Page background behavior, layering, transparent particle canvas, and styling for the custom cursor and served counter. |
-| `Custom_JS.js` | Injects the particles container, loads particles.js and your config, randomizes the background, injects the animated cursor, and injects the served counter (text loaded from your hosted `served.js`). |
+| `Custom_JS.js` | Injects the particles container, loads particles.js and your config, randomizes the background, injects the animated cursor, and can inject an optional served counter (off by default) whose text loads from your hosted `served.js`. |
 
 ## Installation
 
@@ -63,7 +63,7 @@ It handles:
 - Creating `<div id="particles-js">` and loading particles.js plus your config
 - Randomizing the background image from your asset list
 - Injecting the animated cursor and its sparkle trail
-- Injecting the served counter and loading its text from `served.js`
+- Optionally injecting a served counter (off by default) whose text loads from your hosted `served.js`
 - Guarding against duplicate script loads
 
 ## Asset requirements
@@ -78,13 +78,15 @@ https://yourdomain.com/path/bg1.jpg
 https://yourdomain.com/path/bg-special.png
 https://yourdomain.com/path/particles.js
 https://yourdomain.com/path/script.js
-https://yourdomain.com/path/served.js
 ```
+
+The served counter also needs a hosted `served.js`, but only if you choose to enable it (see below).
 
 The custom cursor needs nothing hosted. Its SVG is inline in `Custom_JS.js`.
 
-The served counter loads its text from a small `served.js` you host. That file just sets the
-label text and reveals it:
+The served counter is optional and off by default. To enable it, host a small `served.js`, set
+its URL in `Custom_JS.js`, and remove the `/*` and `*/` that wrap the served counter block. That
+file just sets the label text and reveals it:
 
 ```js
 (function(){var w=document.getElementById("served");if(!w)return;w.textContent="Over 9000 requests served";w.className="on";})();
@@ -96,7 +98,7 @@ In `Custom_JS.js`, update the following to match your own hosting:
 
 - `coreScript.src = 'https://LINK_TO/particlejs/particles.js';`
 - `configScript.src = 'https://LINK_TO/particlejs/script.js';`
-- `s.src = 'https://LINK_TO/served.js';`
+- `s.src = 'https://LINK_TO/served.js';` (only if you enable the served counter)
 - The `bgImages` array near the top:
 
 ```js
