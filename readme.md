@@ -6,7 +6,7 @@ Custom branding setup for AzuraCast public pages, created by **Hailey Ross**.
 
 A plug-and-play branding package for **AzuraCast Docker installations**, which expose only
 **Custom CSS** and **Custom JS** fields under branding (no HTML header/footer). Everything is
-injected automatically through those two fields — no HTML editing required.
+injected automatically through those two fields. No HTML editing required.
 
 It gives your AzuraCast public pages:
 
@@ -81,7 +81,7 @@ https://yourdomain.com/path/script.js
 https://yourdomain.com/path/served.js
 ```
 
-The custom cursor needs nothing hosted — its SVG is inline in `Custom_JS.js`.
+The custom cursor needs nothing hosted. Its SVG is inline in `Custom_JS.js`.
 
 The served counter loads its text from a small `served.js` you host. That file just sets the
 label text and reveals it:
